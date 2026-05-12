@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Alert } from 'antd';
 import FormInput from '../../components/common/FormInput';
 import SubmitButton from '../../components/common/SubmitButton';
@@ -83,7 +83,7 @@ const RegisterPage = () => {
             localStorage.removeItem('tempToken');
             localStorage.removeItem('registerEmail');
             
-            navigate('/home'); 
+            navigate('/login'); 
         } catch (err) {
             setErrors({ otpCode: err.error || "Mã OTP không hợp lệ" });
             if (err.error?.includes("Token không hợp lệ")) { 
@@ -96,6 +96,9 @@ const RegisterPage = () => {
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 transition-all duration-500">
             <div className={`w-full max-w-md p-8 bg-white rounded-2xl shadow-xl border border-gray-100 transition-opacity duration-500 ${loading ? 'opacity-70' : 'opacity-100'}`}>
+                <Link to="/" className="mb-4 inline-flex text-sm font-medium text-gray-500 hover:text-blue-600 hover:underline">
+                    ← Trang chủ
+                </Link>
                 <header className="mb-8 text-center">
                     <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Realtime Chat</h1>
                     <p className="text-gray-500 mt-2 font-medium">

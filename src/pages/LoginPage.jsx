@@ -46,6 +46,9 @@ const LoginPage = () => {
             <div className="fixed w-[500px] h-[500px] rounded-full blur-[80px] opacity-60 pointer-events-none -bottom-38 -left-25 bg-[radial-gradient(circle,#dbeafe_0%,transparent_70%)] animate-[float2_12s_ease-in-out_infinite]" />
 
             <div className="relative z-10 w-full max-w-[420px] px-4">
+                <Link to="/" className="mb-4 inline-flex text-sm font-medium text-slate-500 hover:text-indigo-500 hover:underline">
+                    ← Trang chủ
+                </Link>
                 <div className="bg-white rounded-3xl p-11 shadow-[0_20px_40px_rgba(148,163,184,0.15),0_1px_3px_rgba(0,0,0,0.05)] border border-slate-100 animate-[cardIn_0.5s_ease-out]">
                     {/* Logo */}
                     <div className="text-center mb-9">
