@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import AuthHomePage from './pages/auth/AuthHomePage';
 import RegisterPage from './pages/auth/RegisterPage';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import LoginPage from './pages/LoginPage';
 import UserProfilePage from './pages/UserProfilePage';
 import AdminProfilePage from './pages/AdminProfilePage';
@@ -11,9 +13,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" />} />
+        <Route path="/" element={<AuthHomePage />} />
         
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         
         <Route path="/login" element={<LoginPage />} />
         
