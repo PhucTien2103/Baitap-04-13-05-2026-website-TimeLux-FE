@@ -6,6 +6,7 @@ import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import LoginPage from './pages/LoginPage';
 import UserProfilePage from './pages/UserProfilePage';
 import AdminProfilePage from './pages/AdminProfilePage';
+import GuestRoute from './components/common/GuestRoute';
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -15,10 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<AuthHomePage />} />
         
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/register" element={<GuestRoute><RegisterPage /></GuestRoute>} />
+        <Route path="/forgot-password" element={<GuestRoute><ForgotPasswordPage /></GuestRoute>} />
         
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<GuestRoute><LoginPage /></GuestRoute>} />
         
         <Route 
           path="/user/profile" 

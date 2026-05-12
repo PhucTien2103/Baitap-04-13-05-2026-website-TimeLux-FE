@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from 'antd';
 
 const SubmitButton = ({ loading, children, onClick, type = "primary", className = "" }) => (
