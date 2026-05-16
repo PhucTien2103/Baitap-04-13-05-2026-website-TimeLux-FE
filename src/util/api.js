@@ -23,3 +23,11 @@ export const getAdminProfileApi = () => {
 export const getModeratorProfileApi = () => {
     return axios.get('/moderator/profile', { baseURL: '' });
 };
+
+export const getProductsApi = (params) => {
+    return axios.get('/products', { params });
+};
+
+export const getProductDetailApi = (id) => {
+    return axios.get(`/products/${id}`);
+};

@@ -1,8 +1,12 @@
-const StatusAlert = ({ type = 'error', children }) => {
+const StatusAlert = ({ type = 'error', children, variant = 'default' }) => {
     const isSuccess = type === 'success';
-    const className = isSuccess
-        ? 'bg-green-50 text-green-600 border-green-200'
-        : 'bg-red-50 text-red-500 border-red-200';
+    const className = variant === 'luxury'
+        ? (isSuccess
+            ? 'bg-emerald-500/10 text-emerald-200 border-emerald-400/30'
+            : 'bg-red-500/10 text-red-200 border-red-400/30')
+        : (isSuccess
+            ? 'bg-green-50 text-green-600 border-green-200'
+            : 'bg-red-50 text-red-500 border-red-200');
 
     const icon = isSuccess ? (
         <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -15,7 +19,7 @@ const StatusAlert = ({ type = 'error', children }) => {
     );
 
     return (
-        <div className={`rounded-xl px-4 py-3 text-sm font-medium border mb-5 animate-[msgIn_0.3s_ease] flex items-center gap-2 ${className}`}>
+        <div className={`px-4 py-3 text-sm font-medium border mb-5 animate-[msgIn_0.3s_ease] flex items-center gap-2 ${variant === 'luxury' ? 'rounded-none' : 'rounded-xl'} ${className}`}>
             {icon}
             <span>{children}</span>
         </div>

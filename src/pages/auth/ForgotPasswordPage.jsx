@@ -52,19 +52,21 @@ const ForgotPasswordPage = () => {
     <AuthShell
       title="Quên mật khẩu"
       subtitle={isForgotPasswordOtpSent ? "Nhập OTP và mật khẩu mới" : "Nhập email để nhận mã OTP"}
+      background="otp"
       icon={(
-        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-7 h-7 text-[#f2ca50]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 1a7 7 0 00-7 7v3H4a2 2 0 00-2 2v8a2 2 0 002 2h16a2 2 0 002-2v-8a2 2 0 00-2-2h-1V8a7 7 0 00-7-7zm-5 10V8a5 5 0 1110 0v3H7zm5 4a2 2 0 110 4 2 2 0 010-4z" />
         </svg>
       )}
     >
-      {forgotPasswordError && <StatusAlert>{forgotPasswordError}</StatusAlert>}
-      {forgotPasswordMessage && <StatusAlert type="success">{forgotPasswordMessage}</StatusAlert>}
+      {forgotPasswordError && <StatusAlert variant="luxury">{forgotPasswordError}</StatusAlert>}
+      {forgotPasswordMessage && <StatusAlert variant="luxury" type="success">{forgotPasswordMessage}</StatusAlert>}
 
       <div className="space-y-4">
         {!isForgotPasswordOtpSent ? (
             <>
               <FormInput
+                variant="luxury"
                 label="Email"
                 name="email"
                 type="email"
@@ -75,13 +77,14 @@ const ForgotPasswordPage = () => {
                 }}
                 placeholder="name@example.com"
               />
-              <SubmitButton loading={forgotPasswordLoading} onClick={handleSendOtp}>
+              <SubmitButton variant="luxury" loading={forgotPasswordLoading} onClick={handleSendOtp}>
                 Gửi mã OTP
               </SubmitButton>
             </>
           ) : (
             <>
               <FormInput
+                variant="luxury"
                 label="OTP"
                 name="otp"
                 value={otp}
@@ -93,6 +96,7 @@ const ForgotPasswordPage = () => {
                 maxLength={6}
               />
               <FormInput
+                variant="luxury"
                 label="Mật khẩu mới"
                 name="newPassword"
                 type="password"
@@ -103,7 +107,7 @@ const ForgotPasswordPage = () => {
                 }}
                 placeholder="Tối thiểu 6 ký tự"
               />
-              <SubmitButton loading={forgotPasswordLoading} onClick={handleResetPassword}>
+              <SubmitButton variant="luxury" loading={forgotPasswordLoading} onClick={handleResetPassword}>
                 Đổi mật khẩu
               </SubmitButton>
             </>
@@ -112,7 +116,7 @@ const ForgotPasswordPage = () => {
 
       <Link
         to="/login"
-        className="block mt-6 text-center text-gray-500 text-sm font-medium hover:text-blue-600 hover:underline"
+        className="mt-6 block text-center text-sm font-medium text-[#d0c5af] transition-colors hover:text-[#f2ca50] hover:underline"
       >
         Quay lại đăng nhập
       </Link>

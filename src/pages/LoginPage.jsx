@@ -35,7 +35,7 @@ const LoginPage = () => {
                 } else if (roleId === 'R3') {
                     navigate('/moderator/users');
                 } else {
-                    navigate('/user/profile');
+                    navigate('/home');
                 }
             }, 800);
         }
@@ -43,39 +43,40 @@ const LoginPage = () => {
 
     return (
         <AuthShell
-            title="Chat App"
-            subtitle="Đăng nhập để tiếp tục"
+            title="Đăng nhập"
+            subtitle="Truy cập khu vực thành viên TimeLux"
+            background="login"
             icon={(
-                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7 text-[#f2ca50]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
                 </svg>
             )}
             footer={(
                 <>
-                    <div className="flex items-center my-7">
-                        <div className="flex-1 h-px bg-slate-200" />
-                        <span className="text-slate-400 text-[11px] font-semibold px-3 uppercase tracking-wider">hoặc</span>
-                        <div className="flex-1 h-px bg-slate-200" />
+                    <div className="my-7 flex items-center">
+                        <div className="h-px flex-1 bg-[#4d4635]" />
+                        <span className="px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#d0c5af]">hoặc</span>
+                        <div className="h-px flex-1 bg-[#4d4635]" />
                     </div>
 
                     <Link
                         to="/register"
-                        className="block w-full py-3 text-center border border-slate-300 rounded-xl bg-white text-slate-600 text-sm font-semibold transition-all hover:border-indigo-500 hover:text-indigo-500 hover:bg-slate-50"
+                        className="block w-full border border-[#4d4635] py-3 text-center text-xs font-bold uppercase tracking-[0.18em] text-[#d0c5af] transition-colors hover:border-[#f2ca50] hover:text-[#f2ca50]"
                     >
                         Tạo tài khoản mới
                     </Link>
                 </>
             )}
         >
-            {error && <StatusAlert>{error}</StatusAlert>}
-            {successMsg && <StatusAlert type="success">{successMsg}</StatusAlert>}
+            {error && <StatusAlert variant="luxury">{error}</StatusAlert>}
+            {successMsg && <StatusAlert variant="luxury" type="success">{successMsg}</StatusAlert>}
 
             <form onSubmit={handleSubmit} autoComplete="on">
                         {/* Email */}
                         <div className="mb-5">
-                            <label htmlFor="login-email" className="text-slate-600 text-[13px] font-semibold mb-2 block">Email</label>
+                            <label htmlFor="login-email" className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-[#d0c5af]">Email</label>
                             <div className="relative">
-                                <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f2ca50]" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
@@ -87,16 +88,16 @@ const LoginPage = () => {
                                     placeholder="name@example.com"
                                     required
                                     autoComplete="email"
-                                    className="w-full py-3.5 pl-11 pr-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10"
+                                    className="w-full border-0 border-b border-[#4d4635] bg-transparent py-3.5 pl-8 pr-4 text-sm text-[#e2e2e2] outline-none transition-all placeholder:text-[#d0c5af]/50 focus:border-[#f2ca50]"
                                 />
                             </div>
                         </div>
 
                         {/* Password */}
                         <div className="mb-5">
-                            <label htmlFor="login-password" className="text-slate-600 text-[13px] font-semibold mb-2 block">Mật khẩu</label>
+                            <label htmlFor="login-password" className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-[#d0c5af]">Mật khẩu</label>
                             <div className="relative">
-                                <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f2ca50]" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                                 <input
@@ -107,12 +108,12 @@ const LoginPage = () => {
                                     placeholder="••••••••"
                                     required
                                     autoComplete="current-password"
-                                    className="w-full py-3.5 pl-11 pr-11 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10"
+                                    className="w-full border-0 border-b border-[#4d4635] bg-transparent py-3.5 pl-8 pr-11 text-sm text-[#e2e2e2] outline-none transition-all placeholder:text-[#d0c5af]/50 focus:border-[#f2ca50]"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-500 transition-colors cursor-pointer"
+                                    className="absolute right-0 top-1/2 -translate-y-1/2 cursor-pointer text-[#d0c5af] transition-colors hover:text-[#f2ca50]"
                                 >
                                     {showPassword ? (
                                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clipRule="evenodd" /><path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" /></svg>
@@ -125,7 +126,7 @@ const LoginPage = () => {
 
                         {/* Forgot password */}
                         <div className="text-right mb-5">
-                            <Link to="/forgot-password" className="text-slate-500 text-[13px] font-medium hover:text-indigo-500 hover:underline transition-colors">
+                            <Link to="/forgot-password" className="text-[13px] font-medium text-[#d0c5af] transition-colors hover:text-[#f2ca50] hover:underline">
                                 Quên mật khẩu?
                             </Link>
                         </div>
@@ -134,7 +135,7 @@ const LoginPage = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-3.5 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 text-white text-[15px] font-semibold cursor-pointer transition-all shadow-[0_4px_12px_rgba(99,102,241,0.2)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(99,102,241,0.3)] active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
+                            className="w-full cursor-pointer border border-[#f2ca50] py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-[#f2ca50] transition-all hover:bg-[#f2ca50] hover:text-[#241a00] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {loading ? (
                                 <span className="inline-flex items-center gap-2">

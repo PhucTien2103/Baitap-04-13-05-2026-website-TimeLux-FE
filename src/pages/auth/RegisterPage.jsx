@@ -100,7 +100,7 @@ const RegisterPage = () => {
 
         if (verifyOtp.fulfilled.match(result)) {
             const roleId = result.payload?.user?.roleId || user?.roleId;
-            navigate(roleId === 'R1' ? '/admin/profile' : '/user/profile');
+            navigate(roleId === 'R1' ? '/admin/profile' : '/home');
             return;
         }
 
@@ -118,39 +118,40 @@ const RegisterPage = () => {
 
     return (
         <AuthShell
-            title="Realtime Chat"
-            subtitle={isOtpSent ? 'Xác thực OTP' : 'Bắt đầu hành trình'}
+            title={isOtpSent ? 'Xác thực OTP' : 'Tạo tài khoản'}
+            subtitle={isOtpSent ? 'Nhập mã xác thực để hoàn tất đăng ký' : 'Gia nhập không gian thành viên TimeLux'}
+            background={isOtpSent ? 'otp' : 'register'}
             icon={(
-                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7 text-[#f2ca50]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm1.07-7.75l-.9.92A2 2 0 0012 12h-1v-1a4 4 0 011.17-2.83l1.24-1.25a1.75 1.75 0 10-2.91-1.27H8.5a3.5 3.5 0 116.57 1.6z" />
                 </svg>
             )}
         >
-            {registerError && <StatusAlert>{registerError}</StatusAlert>}
-            {registerMessage && <StatusAlert type="success">{registerMessage}</StatusAlert>}
-            {errors.global && <StatusAlert>{errors.global}</StatusAlert>}
+            {registerError && <StatusAlert variant="luxury">{registerError}</StatusAlert>}
+            {registerMessage && <StatusAlert variant="luxury" type="success">{registerMessage}</StatusAlert>}
+            {errors.global && <StatusAlert variant="luxury">{errors.global}</StatusAlert>}
 
             <div className="space-y-4">
                     {!isOtpSent ? (
                         <>
                             <div className="grid grid-cols-2 gap-4">
-                                <FormInput label="Họ & đệm" name="firstName" value={formData.firstName} onChange={handleChange} error={errors.firstName} />
-                                <FormInput label="Tên" name="lastName" value={formData.lastName} onChange={handleChange} error={errors.lastName} />
+                                <FormInput variant="luxury" label="Họ & đệm" name="firstName" value={formData.firstName} onChange={handleChange} error={errors.firstName} />
+                                <FormInput variant="luxury" label="Tên" name="lastName" value={formData.lastName} onChange={handleChange} error={errors.lastName} />
                             </div>
-                            <FormInput label="Email" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
-                            <FormInput label="Mật khẩu" name="password" type="password" value={formData.password} onChange={handleChange} error={errors.password} />
-                            <SubmitButton loading={registerLoading} onClick={handleRegister}>Tiếp theo</SubmitButton>
+                            <FormInput variant="luxury" label="Email" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
+                            <FormInput variant="luxury" label="Mật khẩu" name="password" type="password" value={formData.password} onChange={handleChange} error={errors.password} />
+                            <SubmitButton variant="luxury" loading={registerLoading} onClick={handleRegister}>Tiếp theo</SubmitButton>
                         </>
                     ) : (
                         <>
-                            <div className="text-center p-4 bg-blue-50 rounded-lg mb-4">
-                                <div className="text-2xl font-mono font-bold text-blue-600">
+                            <div className="mb-4 border border-[#4d4635]/70 bg-[#121414]/70 p-4 text-center">
+                                <div className="font-mono text-2xl font-bold text-[#f2ca50]">
                                     {Math.floor(countdown / 60)}:{(countdown % 60).toString().padStart(2, '0')}
                                 </div>
-                                <p className="text-xs text-blue-500 mt-1">Mã OTP hết hạn sau 5 phút</p>
+                                <p className="mt-1 text-xs text-[#d0c5af]">Mã OTP hết hạn sau 5 phút</p>
                             </div>
-                            <FormInput label="Nhập mã OTP" name="otpCode" value={formData.otpCode} onChange={handleChange} error={errors.otpCode} />
-                            <SubmitButton loading={registerLoading} onClick={handleVerifyOTP} className="bg-green-600 hover:bg-green-700">Hoàn tất</SubmitButton>
+                            <FormInput variant="luxury" label="Nhập mã OTP" name="otpCode" value={formData.otpCode} onChange={handleChange} error={errors.otpCode} />
+                            <SubmitButton variant="luxury" loading={registerLoading} onClick={handleVerifyOTP}>Hoàn tất</SubmitButton>
                         </>
                     )}
             </div>

@@ -4,6 +4,8 @@ import AuthHomePage from './pages/auth/AuthHomePage';
 import RegisterPage from './pages/auth/RegisterPage';
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import UserProfilePage from './pages/UserProfilePage';
 import AdminProfilePage from './pages/AdminProfilePage';
 import ModeratorProfilePage from './pages/ModeratorProfilePage';
@@ -37,11 +39,15 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
   }
 
   if (allowedRoles && !allowedRoles.includes(roleId)) {
+    if (roleId === 'R1') {
+      return <Navigate to="/management/users" />;
+    }
+
     if (roleId === 'R3') {
       return <Navigate to="/moderator/users" />;
     }
 
-    return <Navigate to="/user/profile" />;
+    return <Navigate to="/home" />;
   }
 
   return children;
@@ -59,6 +65,24 @@ function App() {
         <Route path="/forgot-password" element={<GuestRoute><ForgotPasswordPage /></GuestRoute>} />
         
         <Route path="/login" element={<GuestRoute><LoginPage /></GuestRoute>} />
+
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute allowedRoles={['R2']}>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/products/:id"
+          element={
+            <ProtectedRoute allowedRoles={['R2']}>
+              <ProductDetailPage />
+            </ProtectedRoute>
+          }
+        />
         
         <Route 
           path="/user/profile" 
